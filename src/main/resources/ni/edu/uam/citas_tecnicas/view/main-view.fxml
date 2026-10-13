@@ -3,15 +3,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<!--
-    Ventana principal: solo es el CONTENEDOR.
-    Encabezado arriba, pestañas en el centro y barra de estado abajo.
-    Cada pestaña carga la vista de su dueña con fx:include.
--->
 
 <BorderPane minHeight="600.0" minWidth="900.0" prefHeight="700.0" prefWidth="1100.0" styleClass="ventana-principal" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
 
-    <!-- ===== Encabezado ===== -->
     <top>
         <HBox alignment="CENTER_LEFT" spacing="14.0" styleClass="encabezado">
             <StackPane styleClass="logo">
@@ -25,7 +19,6 @@
         </HBox>
     </top>
 
-    <!-- ===== Contenido: una pestaña por módulo ===== -->
     <center>
         <TabPane styleClass="tabs-principal" tabClosingPolicy="UNAVAILABLE">
             <Tab text="Clientes">
@@ -53,7 +46,6 @@
         </TabPane>
     </center>
 
-    <!-- ===== Barra de estado ===== -->
     <bottom>
         <HBox alignment="CENTER_LEFT" spacing="8.0" styleClass="barra-estado">
             <Region HBox.hgrow="ALWAYS" />

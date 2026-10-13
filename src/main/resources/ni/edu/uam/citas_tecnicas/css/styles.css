@@ -1,22 +1,12 @@
-/* =========================================================
-   Citas Técnicas - hoja de estilos única
-   Ruta: src/main/resources/ni/edu/uam/citas_tecnicas/css/styles.css
-   Se enlaza una sola vez en main-view.fxml; las vistas incluidas
-   (cliente-view, cita-view) heredan estos estilos.
-   ========================================================= */
 
-/* ---------- Paleta (variables reutilizables) ----------
-   .root la usa la app al ejecutarse (incluye popups y Alertas).
-   .ventana-principal y .vista hacen que Scene Builder también vea
-   las variables, porque ahí el nodo raíz del FXML no tiene .root. */
 .root,
 .ventana-principal,
 .vista {
-    -color-primario:        #1E3A5F;  /* azul profundo: confianza, técnico */
+    -color-primario:        #1E3A5F;
     -color-primario-hover:  #2B4F7E;
     -color-primario-oscuro: #142A47;
-    -color-acento:          #F59E0B;  /* ámbar: llama la atención sin gritar */
-    -color-fondo:           #F3F5F8;  /* gris muy claro: descansa la vista */
+    -color-acento:          #F59E0B;
+    -color-fondo:           #F3F5F8;
     -color-superficie:      #FFFFFF;
     -color-borde:           #D6DCE4;
     -color-borde-suave:     #E8ECF1;
@@ -27,7 +17,6 @@
     -color-advertencia:     #B45309;
     -color-info:            #2563EB;
 
-    /* Variables propias de Modena (el tema por defecto de JavaFX) */
     -fx-accent:             -color-primario;
     -fx-focus-color:        -color-primario-hover;
     -fx-faint-focus-color:  #2B4F7E22;
@@ -40,7 +29,6 @@
     -fx-background-color: -color-fondo;
 }
 
-/* ---------- Encabezado ---------- */
 .encabezado {
     -fx-background-color: linear-gradient(to right, -color-primario-oscuro, -color-primario);
     -fx-padding: 14 24 14 24;
@@ -80,7 +68,6 @@
     -fx-background-radius: 12;
 }
 
-/* ---------- Pestañas ---------- */
 .tabs-principal .tab-header-area {
     -fx-padding: 6 0 0 16;
 }
@@ -119,7 +106,6 @@
     -fx-border-color: transparent;
 }
 
-/* ---------- Barra de estado ---------- */
 .barra-estado {
     -fx-background-color: -color-superficie;
     -fx-padding: 6 16 6 16;
@@ -139,7 +125,6 @@
     -fx-max-width: 8;  -fx-max-height: 8;
 }
 
-/* ---------- Placeholder (mientras no existan las vistas) ---------- */
 .placeholder {
     -fx-padding: 40;
 }
@@ -154,18 +139,12 @@
     -fx-text-fill: -color-texto-suave;
 }
 
-/* =========================================================
-   Clases para las vistas de Clientes y Citas
-   (se aplican con styleClass="..." en Scene Builder o FXML)
-   ========================================================= */
 
-/* Contenedor de cada vista: dale styleClass="vista" a su raíz */
 .vista {
     -fx-padding: 20;
     -fx-spacing: 16;
 }
 
-/* Panel blanco con sombra suave: formulario, filtros, tabla */
 .tarjeta {
     -fx-background-color: -color-superficie;
     -fx-background-radius: 8;
@@ -192,7 +171,6 @@
     -fx-font-size: 11px;
 }
 
-/* ---------- Botones ---------- */
 .button {
     -fx-background-color: -color-superficie;
     -fx-text-fill: -color-texto;
@@ -235,7 +213,6 @@
     -fx-text-fill: white;
 }
 
-/* Botón sin borde, para acciones secundarias (Limpiar, Cancelar) */
 .boton-secundario {
     -fx-background-color: transparent;
     -fx-text-fill: -color-primario;
@@ -245,7 +222,6 @@
 
 .button:disabled { -fx-opacity: 0.5; }
 
-/* ---------- Campos de entrada ---------- */
 .text-field,
 .text-area,
 .combo-box,
@@ -284,9 +260,6 @@
     -fx-opacity: 0.6;
 }
 
-/* Se agrega desde el controlador cuando una validación falla:
-   campo.getStyleClass().add("campo-error");
-   y se quita al corregir: campo.getStyleClass().remove("campo-error"); */
 .campo-error,
 .campo-error:focused {
     -fx-border-color: -color-peligro;
@@ -314,7 +287,6 @@
 .check-box:selected .mark { -fx-background-color: white; }
 .check-box:selected .box  { -fx-background-color: -color-primario; }
 
-/* ---------- Tabla ---------- */
 .table-view {
     -fx-background-color: -color-superficie;
     -fx-border-color: -color-borde;
@@ -374,9 +346,6 @@
     -fx-text-fill: -color-texto-suave;
 }
 
-/* ---------- Estados de la cita (etiquetas tipo "chip") ----------
-   Úsalas en una Label: lblEstado.getStyleClass().addAll("chip", "estado-pendiente");
-   Ajusta los nombres a los 4 estados del CHECK de gestion_citas.sql. */
 .chip {
     -fx-padding: 2 10 2 10;
     -fx-background-radius: 10;
@@ -388,7 +357,6 @@
 .estado-completada { -fx-background-color: #DCFCE7; -fx-text-fill: -color-exito; }
 .estado-cancelada  { -fx-background-color: #FEE2E2; -fx-text-fill: -color-peligro; }
 
-/* ---------- Scroll ---------- */
 .scroll-pane {
     -fx-background-color: transparent;
 }
