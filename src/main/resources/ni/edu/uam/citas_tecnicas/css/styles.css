@@ -1,0 +1,397 @@
+/* =========================================================
+   Citas Técnicas - hoja de estilos única
+   Ruta: src/main/resources/ni/edu/uam/citas_tecnicas/css/styles.css
+   Se enlaza una sola vez en main-view.fxml; las vistas incluidas
+   (cliente-view, cita-view) heredan estos estilos.
+   ========================================================= */
+
+/* ---------- Paleta (variables reutilizables) ----------
+   .root la usa la app al ejecutarse (incluye popups y Alertas).
+   .ventana-principal y .vista hacen que Scene Builder también vea
+   las variables, porque ahí el nodo raíz del FXML no tiene .root. */
+.root,
+.ventana-principal,
+.vista {
+    -color-primario:        #1E3A5F;  /* azul profundo: confianza, técnico */
+    -color-primario-hover:  #2B4F7E;
+    -color-primario-oscuro: #142A47;
+    -color-acento:          #F59E0B;  /* ámbar: llama la atención sin gritar */
+    -color-fondo:           #F3F5F8;  /* gris muy claro: descansa la vista */
+    -color-superficie:      #FFFFFF;
+    -color-borde:           #D6DCE4;
+    -color-borde-suave:     #E8ECF1;
+    -color-texto:           #1F2937;
+    -color-texto-suave:     #6B7280;
+    -color-exito:           #15803D;
+    -color-peligro:         #DC2626;
+    -color-advertencia:     #B45309;
+    -color-info:            #2563EB;
+
+    /* Variables propias de Modena (el tema por defecto de JavaFX) */
+    -fx-accent:             -color-primario;
+    -fx-focus-color:        -color-primario-hover;
+    -fx-faint-focus-color:  #2B4F7E22;
+
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 13px;
+}
+
+.ventana-principal {
+    -fx-background-color: -color-fondo;
+}
+
+/* ---------- Encabezado ---------- */
+.encabezado {
+    -fx-background-color: linear-gradient(to right, -color-primario-oscuro, -color-primario);
+    -fx-padding: 14 24 14 24;
+    -fx-border-color: transparent transparent -color-acento transparent;
+    -fx-border-width: 0 0 3 0;
+}
+
+.logo {
+    -fx-background-color: -color-acento;
+    -fx-background-radius: 10;
+    -fx-min-width: 42;  -fx-min-height: 42;
+    -fx-max-width: 42;  -fx-max-height: 42;
+}
+
+.logo-texto {
+    -fx-text-fill: -color-primario-oscuro;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.titulo-app {
+    -fx-text-fill: white;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.subtitulo-app {
+    -fx-text-fill: #C9D6E6;
+    -fx-font-size: 12px;
+}
+
+.insignia {
+    -fx-text-fill: white;
+    -fx-font-size: 11px;
+    -fx-padding: 4 10 4 10;
+    -fx-background-color: rgba(255, 255, 255, 0.12);
+    -fx-background-radius: 12;
+}
+
+/* ---------- Pestañas ---------- */
+.tabs-principal .tab-header-area {
+    -fx-padding: 6 0 0 16;
+}
+
+.tabs-principal .tab-header-area .tab-header-background {
+    -fx-background-color: -color-superficie;
+    -fx-border-color: transparent transparent -color-borde transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+.tabs-principal .tab {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 8 20 8 20;
+    -fx-border-color: transparent;
+    -fx-border-width: 0 0 3 0;
+}
+
+.tabs-principal .tab:selected {
+    -fx-border-color: transparent transparent -color-acento transparent;
+}
+
+.tabs-principal .tab .tab-label {
+    -fx-text-fill: -color-texto-suave;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.tabs-principal .tab:hover .tab-label,
+.tabs-principal .tab:selected .tab-label {
+    -fx-text-fill: -color-primario;
+}
+
+.tabs-principal .tab:selected .focus-indicator {
+    -fx-border-color: transparent;
+}
+
+/* ---------- Barra de estado ---------- */
+.barra-estado {
+    -fx-background-color: -color-superficie;
+    -fx-padding: 6 16 6 16;
+    -fx-border-color: -color-borde transparent transparent transparent;
+    -fx-border-width: 1 0 0 0;
+}
+
+.barra-estado .label {
+    -fx-text-fill: -color-texto-suave;
+    -fx-font-size: 11px;
+}
+
+.punto-estado {
+    -fx-background-color: -color-exito;
+    -fx-background-radius: 4;
+    -fx-min-width: 8;  -fx-min-height: 8;
+    -fx-max-width: 8;  -fx-max-height: 8;
+}
+
+/* ---------- Placeholder (mientras no existan las vistas) ---------- */
+.placeholder {
+    -fx-padding: 40;
+}
+
+.placeholder-titulo {
+    -fx-text-fill: -color-primario;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.placeholder-texto {
+    -fx-text-fill: -color-texto-suave;
+}
+
+/* =========================================================
+   Clases para las vistas de Clientes y Citas
+   (se aplican con styleClass="..." en Scene Builder o FXML)
+   ========================================================= */
+
+/* Contenedor de cada vista: dale styleClass="vista" a su raíz */
+.vista {
+    -fx-padding: 20;
+    -fx-spacing: 16;
+}
+
+/* Panel blanco con sombra suave: formulario, filtros, tabla */
+.tarjeta {
+    -fx-background-color: -color-superficie;
+    -fx-background-radius: 8;
+    -fx-border-color: -color-borde-suave;
+    -fx-border-radius: 8;
+    -fx-padding: 16;
+    -fx-effect: dropshadow(gaussian, rgba(20, 42, 71, 0.08), 10, 0, 0, 2);
+}
+
+.titulo-seccion {
+    -fx-text-fill: -color-primario;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+
+.etiqueta-campo {
+    -fx-text-fill: -color-texto;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+}
+
+.texto-ayuda {
+    -fx-text-fill: -color-texto-suave;
+    -fx-font-size: 11px;
+}
+
+/* ---------- Botones ---------- */
+.button {
+    -fx-background-color: -color-superficie;
+    -fx-text-fill: -color-texto;
+    -fx-border-color: -color-borde;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 7 16 7 16;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: -color-borde-suave;
+}
+
+.boton-primario {
+    -fx-background-color: -color-primario;
+    -fx-text-fill: white;
+    -fx-border-color: transparent;
+    -fx-font-weight: bold;
+}
+.boton-primario:hover   { -fx-background-color: -color-primario-hover; }
+.boton-primario:pressed { -fx-background-color: -color-primario-oscuro; }
+
+.boton-exito {
+    -fx-background-color: -color-exito;
+    -fx-text-fill: white;
+    -fx-border-color: transparent;
+    -fx-font-weight: bold;
+}
+.boton-exito:hover { -fx-background-color: #166534; }
+
+.boton-peligro {
+    -fx-background-color: -color-superficie;
+    -fx-text-fill: -color-peligro;
+    -fx-border-color: -color-peligro;
+    -fx-font-weight: bold;
+}
+.boton-peligro:hover {
+    -fx-background-color: -color-peligro;
+    -fx-text-fill: white;
+}
+
+/* Botón sin borde, para acciones secundarias (Limpiar, Cancelar) */
+.boton-secundario {
+    -fx-background-color: transparent;
+    -fx-text-fill: -color-primario;
+    -fx-border-color: transparent;
+}
+.boton-secundario:hover { -fx-background-color: -color-borde-suave; }
+
+.button:disabled { -fx-opacity: 0.5; }
+
+/* ---------- Campos de entrada ---------- */
+.text-field,
+.text-area,
+.combo-box,
+.date-picker {
+    -fx-background-color: -color-superficie;
+    -fx-border-color: -color-borde;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+
+.text-field,
+.date-picker .text-field {
+    -fx-padding: 6 10 6 10;
+}
+
+.date-picker .text-field {
+    -fx-border-color: transparent;
+}
+
+.text-area .content {
+    -fx-background-color: -color-superficie;
+    -fx-background-radius: 6;
+}
+
+.text-field:focused,
+.text-area:focused,
+.combo-box:focused,
+.date-picker:focused {
+    -fx-border-color: -color-primario-hover;
+    -fx-border-width: 1.5;
+}
+
+.text-field:disabled,
+.combo-box:disabled,
+.date-picker:disabled {
+    -fx-opacity: 0.6;
+}
+
+/* Se agrega desde el controlador cuando una validación falla:
+   campo.getStyleClass().add("campo-error");
+   y se quita al corregir: campo.getStyleClass().remove("campo-error"); */
+.campo-error,
+.campo-error:focused {
+    -fx-border-color: -color-peligro;
+    -fx-border-width: 1.5;
+}
+
+.mensaje-error {
+    -fx-text-fill: -color-peligro;
+    -fx-font-size: 11px;
+}
+
+.combo-box .list-cell {
+    -fx-text-fill: -color-texto;
+}
+
+.combo-box-popup .list-view .list-cell:filled:hover {
+    -fx-background-color: -color-borde-suave;
+}
+
+.combo-box-popup .list-view .list-cell:filled:selected {
+    -fx-background-color: -color-primario;
+    -fx-text-fill: white;
+}
+
+.check-box:selected .mark { -fx-background-color: white; }
+.check-box:selected .box  { -fx-background-color: -color-primario; }
+
+/* ---------- Tabla ---------- */
+.table-view {
+    -fx-background-color: -color-superficie;
+    -fx-border-color: -color-borde;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 0;
+}
+
+.table-view:focused {
+    -fx-background-insets: 0;
+}
+
+.table-view .column-header-background,
+.table-view .filler {
+    -fx-background-color: -color-primario;
+    -fx-background-radius: 6 6 0 0;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 6 0 6 0;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 0 8 0 8;
+}
+
+.table-row-cell {
+    -fx-background-color: -color-superficie;
+    -fx-table-cell-border-color: -color-borde-suave;
+    -fx-cell-size: 32;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #F8FAFC;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #EEF3F9;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #DCE7F3;
+}
+
+.table-row-cell .table-cell {
+    -fx-text-fill: -color-texto;
+    -fx-padding: 0 8 0 8;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.table-view .placeholder .label {
+    -fx-text-fill: -color-texto-suave;
+}
+
+/* ---------- Estados de la cita (etiquetas tipo "chip") ----------
+   Úsalas en una Label: lblEstado.getStyleClass().addAll("chip", "estado-pendiente");
+   Ajusta los nombres a los 4 estados del CHECK de gestion_citas.sql. */
+.chip {
+    -fx-padding: 2 10 2 10;
+    -fx-background-radius: 10;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+.estado-pendiente  { -fx-background-color: #FEF3C7; -fx-text-fill: -color-advertencia; }
+.estado-en-proceso { -fx-background-color: #DBEAFE; -fx-text-fill: -color-info; }
+.estado-completada { -fx-background-color: #DCFCE7; -fx-text-fill: -color-exito; }
+.estado-cancelada  { -fx-background-color: #FEE2E2; -fx-text-fill: -color-peligro; }
+
+/* ---------- Scroll ---------- */
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
