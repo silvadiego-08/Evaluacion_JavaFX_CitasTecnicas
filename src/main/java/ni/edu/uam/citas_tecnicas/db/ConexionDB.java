@@ -1,4 +1,90 @@
 package ni.edu.uam.citas_tecnicas.db;
 
-public class ConexionDB {
+import java.io.IOException;
+import java.io.Reader;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Properties;
+
+/**
+ * Punto único de acceso a PostgreSQL.
+ * Los datos de conexión se leen de db.properties (en la raíz del proyecto),
+ * que no se sube a Git porque contiene la contraseña.
+ */
+public final class ConexionDB {
+
+    private static final Path ARCHIVO_CONFIG = Path.of("db.properties");
+
+    // Se carga una sola vez, la primera vez que alguien pide una conexión.
+    private static Properties config;
+
+    // Clase de utilidades: no tiene sentido crear objetos ConexionDB.
+    private ConexionDB() {
+    }
+
+    /**
+     * Devuelve una conexión NUEVA en cada llamada.
+     * Quien la pide la cierra con try-with-resources:
+     *   try (Connection con = ConexionDB.getConexion()) { ... }
+     * No se comparte una conexión estática porque, si un DAO la cierra,
+     * todos los demás se quedarían con una conexión muerta.
+     */
+    public static Connection getConexion() throws SQLException {
+        Properties p = getConfig();
+        // Desde JDBC 4 el driver de PostgreSQL se registra solo: no hace falta Class.forName.
+        return DriverManager.getConnection(
+                p.getProperty("db.url"),
+                p.getProperty("db.user"),
+                p.getProperty("db.password"));
+    }
+
+    /**
+     * Verifica que la base responde ejecutando SELECT 1 con un Statement.
+     * Aquí Statement es suficiente porque la consulta no recibe parámetros;
+     * en los DAO se usa siempre PreparedStatement.
+     */
+    public static boolean probarConexion() throws SQLException {
+        try (Connection con = getConexion();
+             Statement st = con.createStatement();
+             ResultSet rs = st.executeQuery("SELECT 1")) {
+            return rs.next() && rs.getInt(1) == 1;
+        }
+    }
+
+    private static Properties getConfig() {
+        if (config == null) {
+            config = cargarConfig();
+        }
+        return config;
+    }
+
+    private static Properties cargarConfig() {
+        if (!Files.exists(ARCHIVO_CONFIG)) {
+            throw new IllegalStateException(
+                    "No se encontró " + ARCHIVO_CONFIG.toAbsolutePath()
+                    + ". Copia db.properties.example como db.properties y escribe tu contraseña.");
+        }
+
+        Properties p = new Properties();
+        // Se lee como UTF-8 para que una contraseña con tildes o ñ no se corrompa
+        // (Properties.load con InputStream usaría ISO-8859-1).
+        try (Reader lector = Files.newBufferedReader(ARCHIVO_CONFIG, StandardCharsets.UTF_8)) {
+            p.load(lector);
+        } catch (IOException e) {
+            throw new IllegalStateException("No se pudo leer " + ARCHIVO_CONFIG.toAbsolutePath(), e);
+        }
+
+        for (String clave : new String[]{"db.url", "db.user", "db.password"}) {
+            if (p.getProperty(clave) == null) {
+                throw new IllegalStateException("Falta la clave '" + clave + "' en db.properties.");
+            }
+        }
+        return p;
+    }
 }
