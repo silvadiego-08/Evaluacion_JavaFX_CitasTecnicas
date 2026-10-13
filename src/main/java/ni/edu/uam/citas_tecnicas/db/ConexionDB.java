@@ -21,20 +21,13 @@ public final class ConexionDB {
 
     private static final Path ARCHIVO_CONFIG = Path.of("db.properties");
 
-    // Se carga una sola vez, la primera vez que alguien pide una conexión.
+    // Se carga una sola vez, la primera vez que alguien pide una conexión
     private static Properties config;
 
-    // Clase de utilidades: no tiene sentido crear objetos ConexionDB.
+    // Clase de utilidades
     private ConexionDB() {
     }
 
-    /**
-     * Devuelve una conexión NUEVA en cada llamada.
-     * Quien la pide la cierra con try-with-resources:
-     *   try (Connection con = ConexionDB.getConexion()) { ... }
-     * No se comparte una conexión estática porque, si un DAO la cierra,
-     * todos los demás se quedarían con una conexión muerta.
-     */
     public static Connection getConexion() throws SQLException {
         Properties p = getConfig();
         // Desde JDBC 4 el driver de PostgreSQL se registra solo: no hace falta Class.forName.
@@ -47,7 +40,6 @@ public final class ConexionDB {
     /**
      * Verifica que la base responde ejecutando SELECT 1 con un Statement.
      * Aquí Statement es suficiente porque la consulta no recibe parámetros;
-     * en los DAO se usa siempre PreparedStatement.
      */
     public static boolean probarConexion() throws SQLException {
         try (Connection con = getConexion();
