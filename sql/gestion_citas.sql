@@ -20,3 +20,4 @@ CREATE TABLE cita_tecnica (
                               estado VARCHAR(20) NOT NULL CHECK (estado IN ('Pendiente', 'En proceso', 'Finalizada', 'Cancelada')),
                               CONSTRAINT fk_cita_cliente FOREIGN KEY (cliente_id) REFERENCES cliente (id) ON DELETE RESTRICT
 );
+
