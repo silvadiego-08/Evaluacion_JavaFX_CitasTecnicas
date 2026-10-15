@@ -363,3 +363,233 @@
 .scroll-pane > .viewport {
     -fx-background-color: transparent;
 }
+
+
+/* ========================================== */
+/* Estilos para el módulo Clientes */
+/* ========================================== */
+
+.root-container {
+    -fx-background-color: #f4f6f9;
+}
+
+.section-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e293b;
+}
+
+.form-card {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 8px;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 8px;
+    -fx-border-width: 1px;
+}
+
+.field-label {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #475569;
+}
+
+.text-field-custom {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 8px 12px;
+    -fx-font-size: 13px;
+}
+
+.text-field-custom:focused {
+    -fx-border-color: #f97316;
+    -fx-border-width: 1.5px;
+}
+
+.check-box-custom {
+    -fx-font-size: 13px;
+    -fx-text-fill: #334155;
+}
+
+.btn-primary {
+    -fx-background-color: #f97316;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-padding: 8px 16px;
+    -fx-cursor: hand;
+}
+.btn-primary:hover {
+    -fx-background-color: #ea580c;
+}
+
+.btn-secondary {
+    -fx-background-color: #64748b;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-padding: 8px 16px;
+    -fx-cursor: hand;
+}
+.btn-secondary:hover {
+    -fx-background-color: #475569;
+}
+
+.btn-warning {
+    -fx-background-color: #0f172a;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-padding: 8px 16px;
+    -fx-cursor: hand;
+}
+.btn-warning:hover {
+    -fx-background-color: #1e293b;
+}
+
+.btn-danger {
+    -fx-background-color: #ef4444;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-padding: 8px 16px;
+    -fx-cursor: hand;
+}
+.btn-danger:hover {
+    -fx-background-color: #dc2626;
+}
+
+.table-view-custom {
+    -fx-background-color: white;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+}
+
+.table-view-custom .column-header-background {
+    -fx-background-color: #0f172a;
+    -fx-background-radius: 8px 8px 0px 0px;
+}
+
+.table-view-custom .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.table-view-custom .table-row-cell:selected {
+    -fx-background-color: #fed7aa;
+    -fx-text-fill: #0f172a;
+}
+
+
+/* Contenedor y títulos */
+.root-container {
+    -fx-background-color: #f8fafc;
+}
+
+.section-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+}
+
+/* Tarjeta del formulario */
+.form-card {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 6px;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 6px;
+    -fx-border-width: 1px;
+}
+
+.field-label {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #64748b;
+}
+
+.text-field-custom {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-padding: 6px 10px;
+    -fx-font-size: 12px;
+}
+
+.text-field-custom:focused {
+    -fx-border-color: #f97316;
+    -fx-border-width: 1.5px;
+}
+
+.check-box-custom {
+    -fx-font-size: 12px;
+    -fx-text-fill: #334155;
+}
+
+/* Botones Principales (Naranja corporativo) */
+.btn-action-primary {
+    -fx-background-color: #f97316;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-background-radius: 4px;
+    -fx-padding: 6px 14px;
+    -fx-cursor: hand;
+}
+.btn-action-primary:hover {
+    -fx-background-color: #ea580c;
+}
+
+/* Botones Secundarios (Gris sutil) */
+.btn-action-secondary {
+    -fx-background-color: #e2e8f0;
+    -fx-text-fill: #334155;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-background-radius: 4px;
+    -fx-padding: 6px 14px;
+    -fx-cursor: hand;
+}
+.btn-action-secondary:hover {
+    -fx-background-color: #cbd5e1;
+}
+
+/* Botón Eliminar (Rojo discreto) */
+.btn-action-danger {
+    -fx-background-color: #fee2e2;
+    -fx-text-fill: #dc2626;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-background-radius: 4px;
+    -fx-padding: 6px 14px;
+    -fx-cursor: hand;
+}
+.btn-action-danger:hover {
+    -fx-background-color: #fecaca;
+}
+
+/* Estilo de la tabla */
+.table-view-custom {
+    -fx-background-color: white;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+}
+
+.table-view-custom .column-header-background {
+    -fx-background-color: #0f172a;
+    -fx-background-radius: 6px 6px 0px 0px;
+}
+
+.table-view-custom .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+}
+
+.table-view-custom .table-row-cell:selected {
+    -fx-background-color: #ffedd5;
+    -fx-text-fill: #0f172a;
+}
