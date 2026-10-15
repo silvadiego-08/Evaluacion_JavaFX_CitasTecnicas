@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="ni.edu.uam.citas_tecnicas.controller.CitaController"
+      stylesheets="@../css/styles.css"
+      spacing="15">
+    <padding>
+        <Insets top="15" right="15" bottom="15" left="15"/>
+    </padding>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Estado:"/>
+        <ComboBox fx:id="cbFiltroEstado" promptText="Todos"/>
+        <Label text="Fecha:"/>
+        <DatePicker fx:id="dpFiltroFecha"/>
+        <Button text="Filtrar" onAction="#onFiltrar"/>
+        <Button text="Limpiar Filtros" onAction="#onLimpiarFiltros"/>
+    </HBox>
+
+    <GridPane hgap="10" vgap="10">
+        <Label text="Cliente:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <ComboBox fx:id="cbCliente" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+        <Label text="Fecha:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <DatePicker fx:id="dpFecha" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+        <Label text="Hora:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <ComboBox fx:id="cbHora" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+        <Label text="Tipo Servicio:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <TextField fx:id="txtTipoServicio" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+        <Label text="Descripción:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+        <TextArea fx:id="txtDescripcion" prefRowCount="3" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+        <Label text="Estado:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+        <ComboBox fx:id="cbEstado" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+    </GridPane>
+
+    <HBox spacing="10">
+        <Button text="Nuevo" onAction="#onNuevo"/>
+        <Button text="Guardar" onAction="#onGuardar"/>
+        <Button text="Actualizar" onAction="#onActualizar"/>
+        <Button text="Eliminar" onAction="#onEliminar"/>
+        <Button text="Limpiar Formulario" onAction="#onLimpiarFormulario"/>
+    </HBox>
+
+    <TableView fx:id="tablaCitas" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+            <TableColumn fx:id="colCliente" text="Cliente" prefWidth="150"/>
+            <TableColumn fx:id="colFecha" text="Fecha" prefWidth="100"/>
+            <TableColumn fx:id="colHora" text="Hora" prefWidth="80"/>
+            <TableColumn fx:id="colServicio" text="Servicio" prefWidth="120"/>
+            <TableColumn fx:id="colEstado" text="Estado" prefWidth="100"/>
+        </columns>
+    </TableView>
+</VBox>
