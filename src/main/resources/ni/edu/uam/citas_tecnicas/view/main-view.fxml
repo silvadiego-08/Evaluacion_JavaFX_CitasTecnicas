@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane minHeight="600.0" minWidth="900.0" prefHeight="700.0" prefWidth="1100.0" styleClass="ventana-principal" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="14.0" styleClass="encabezado">
+            <StackPane styleClass="logo">
+                <Label styleClass="logo-texto" text="CT" />
+            </StackPane>
+            <VBox alignment="CENTER_LEFT" spacing="2.0">
+                <Label styleClass="titulo-app" text="Citas Técnicas" />
+                <Label styleClass="subtitulo-app" text="Gestión de clientes y citas de servicio técnico" />
+            </VBox>
+            <Region HBox.hgrow="ALWAYS" />
+        </HBox>
+    </top>
+
+    <center>
+        <TabPane styleClass="tabs-principal" tabClosingPolicy="UNAVAILABLE">
+            <Tab text="Clientes">
+                <content>
+                    <!-- Cuando Mia tenga su vista lista, borra el VBox de abajo y descomenta esta línea:
+                    <fx:include source="cliente-view.fxml"/>
+                    -->
+                    <VBox alignment="CENTER" spacing="6.0" styleClass="placeholder">
+                        <Label styleClass="placeholder-titulo" text="Módulo de clientes" />
+                        <Label styleClass="placeholder-texto" text="Aquí se cargará cliente-view.fxml" />
+                    </VBox>
+                </content>
+            </Tab>
+            <Tab text="Citas técnicas">
+                <content>
+                    <!-- Cuando Celeste tenga su vista lista, borra el VBox de abajo y descomenta esta línea:
+                    <fx:include source="cita-view.fxml"/>
+                    -->
+                    <VBox alignment="CENTER" spacing="6.0" styleClass="placeholder">
+                        <Label styleClass="placeholder-titulo" text="Módulo de citas técnicas" />
+                        <Label styleClass="placeholder-texto" text="Aquí se cargará cita-view.fxml" />
+                    </VBox>
+                </content>
+            </Tab>
+        </TabPane>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER_LEFT" spacing="8.0" styleClass="barra-estado">
+            <Region HBox.hgrow="ALWAYS" />
+            <Label text="JavaFX · PostgreSQL · JDBC" />
+        </HBox>
+    </bottom>
+</BorderPane>
