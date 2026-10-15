@@ -15,8 +15,8 @@ import java.util.Properties;
 /**
  * Punto único de acceso a PostgreSQL.
  * Los datos de conexión se leen de db.properties (en la raíz del proyecto),
- * que no se sube a Git porque contiene la contraseña.
  */
+
 public final class ConexionDB {
 
     private static final Path ARCHIVO_CONFIG = Path.of("db.properties");
@@ -30,17 +30,14 @@ public final class ConexionDB {
 
     public static Connection getConexion() throws SQLException {
         Properties p = getConfig();
-        // Desde JDBC 4 el driver de PostgreSQL se registra solo: no hace falta Class.forName.
         return DriverManager.getConnection(
                 p.getProperty("db.url"),
                 p.getProperty("db.user"),
                 p.getProperty("db.password"));
     }
 
-    /**
-     * Verifica que la base responde ejecutando SELECT 1 con un Statement.
-     * Aquí Statement es suficiente porque la consulta no recibe parámetros;
-     */
+
+     // Verifica que la base responde ejecutando SELECT 1 con un Statement.
     public static boolean probarConexion() throws SQLException {
         try (Connection con = getConexion();
              Statement st = con.createStatement();
@@ -65,7 +62,6 @@ public final class ConexionDB {
 
         Properties p = new Properties();
         // Se lee como UTF-8 para que una contraseña con tildes o ñ no se corrompa
-        // (Properties.load con InputStream usaría ISO-8859-1).
         try (Reader lector = Files.newBufferedReader(ARCHIVO_CONFIG, StandardCharsets.UTF_8)) {
             p.load(lector);
         } catch (IOException e) {

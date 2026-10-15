@@ -7,17 +7,15 @@ import javafx.scene.control.ButtonType;
 import java.net.URL;
 
 /**
- * Ventanas de mensaje reutilizables para todos los controladores.
- * Así cada vista muestra los mensajes con el mismo formato y no repite
- * las mismas 5 líneas de Alert en cada botón.
- *
+ * mensaje reutilizables para todos los controladores
+
  * Se deben llamar desde el hilo de JavaFX (por ejemplo, dentro de un evento de botón).
  */
 public final class Alertas {
 
     private static final String RUTA_CSS = "/ni/edu/uam/citas_tecnicas/css/styles.css";
 
-    // Botones propios para que la confirmación diga "Sí"/"No"
+    // Botones propios para que la confirmación diga si o no
 
     private static final ButtonType BOTON_SI = new ButtonType("Sí", ButtonBar.ButtonData.YES);
     private static final ButtonType BOTON_NO = new ButtonType("No", ButtonBar.ButtonData.NO);
@@ -25,17 +23,17 @@ public final class Alertas {
     private Alertas() {
     }
 
-    /** Operación exitosa. Ej.: "Cliente guardado correctamente." */
+    // Operación exitosa
     public static void info(String titulo, String mensaje) {
         mostrar(Alert.AlertType.INFORMATION, titulo, mensaje);
     }
 
-    /** Datos inválidos o acción no permitida. Ej.: "El correo no tiene un formato válido." */
+    // Datos inválidos o acción no permitida
     public static void advertencia(String titulo, String mensaje) {
         mostrar(Alert.AlertType.WARNING, titulo, mensaje);
     }
 
-    /** Error que el usuario no puede corregir desde el formulario. */
+    // Error que el usuario no puede corregir desde el formulario
     public static void error(String titulo, String mensaje) {
         mostrar(Alert.AlertType.ERROR, titulo, mensaje);
     }
@@ -50,7 +48,7 @@ public final class Alertas {
 
     /**
      * Pide confirmación antes de una acción irreversible (eliminar, cancelar una cita).
-     * Devuelve true solo si el usuario pulsa "Sí"; cerrar la ventana cuenta como "No".
+     * Devuelve true solo si el usuario pulsa si, cerrar la ventana cuenta como No.
      */
     public static boolean confirmar(String titulo, String mensaje) {
         Alert alerta = crear(Alert.AlertType.CONFIRMATION, titulo, mensaje);
@@ -68,7 +66,7 @@ public final class Alertas {
         alerta.setHeaderText(null);
         alerta.setContentText(mensaje);
 
-        // Una alerta es una ventana aparte: no hereda el CSS de la ventana principal
+        // Una alerta es una ventana aparte, entonces no hereda el CSS de la ventana principal
         URL css = Alertas.class.getResource(RUTA_CSS);
         if (css != null) {
             alerta.getDialogPane().getStylesheets().add(css.toExternalForm());

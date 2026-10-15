@@ -16,7 +16,7 @@ import java.util.List;
 
 public class CitaTecnicaDAO {
 
-    // JOIN con cliente para traer el nombre completo que se muestra en la TableView.
+    // uso el JOIN con cliente para traer el nombre completo que se muestra en la table view
     private static final String SELECT_CON_CLIENTE =
             "SELECT ct.id, ct.cliente_id, c.nombres || ' ' || c.apellidos AS cliente_nombre, "
                     + "ct.fecha, ct.hora, ct.tipo_servicio, ct.descripcion, ct.estado "
@@ -95,7 +95,6 @@ public class CitaTecnicaDAO {
         }
     }
 
-    // Parámetros 1 a 6, comunes a INSERT y UPDATE (mismo orden de columnas).
     private void llenarCampos(PreparedStatement ps, CitaTecnica cita) throws SQLException {
         ps.setInt(1, cita.getClienteId());
         ps.setDate(2, Date.valueOf(cita.getFecha()));
@@ -105,7 +104,7 @@ public class CitaTecnicaDAO {
         ps.setString(6, cita.getEstado());
     }
 
-    // Convierte la fila actual del ResultSet en un objeto CitaTecnica.
+    // Convierte la fila actual del ResultSet en un objeto CitaTecnica
     private CitaTecnica mapear(ResultSet rs) throws SQLException {
         return new CitaTecnica(
                 rs.getInt("id"),
