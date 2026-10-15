@@ -1,5 +1,6 @@
-package ni.edu.uam.citas_tecnicas.dao;
+package ni.edu.uam.citas_tecnicas.db;
 
+import ni.edu.uam.citas_tecnicas.dao.ClienteDAO;
 import ni.edu.uam.citas_tecnicas.model.Cliente;
 
 import java.sql.SQLException;
