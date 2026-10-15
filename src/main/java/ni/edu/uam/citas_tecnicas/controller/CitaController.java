@@ -48,13 +48,13 @@ public class CitaController {
     public void initialize() {
         // 1. Mapeo de columnas con los atributos de CitaTecnica
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        colCliente.setCellValueFactory(new PropertyValueFactory<>("clienteNombre"));
+        colCliente.setCellValueFactory(new PropertyValueFactory<>("clienteNombre")); // Traído por el JOIN en DAO
         colFecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
         colHora.setCellValueFactory(new PropertyValueFactory<>("hora"));
         colServicio.setCellValueFactory(new PropertyValueFactory<>("tipoServicio"));
         colEstado.setCellValueFactory(new PropertyValueFactory<>("estado"));
 
-        // 2. Cargar Estados fijos en los ComboBox de estado
+        // 2. Cargar Estados fijos en los dos ComboBox de estado
         ObservableList<String> estados = FXCollections.observableArrayList(
                 "Pendiente", "En proceso", "Finalizada", "Cancelada"
         );
@@ -83,9 +83,9 @@ public class CitaController {
         cargarClientes();
     }
 
-    /**
-     * Carga todos los registros de citas desde la base de datos a la TableView.
-     */
+
+    // Carga todos los registros de citas desde la base de datos a la TableView.
+
     private void cargarTabla() {
         try {
             List<CitaTecnica> lista = citaDAO.listar();
@@ -96,10 +96,7 @@ public class CitaController {
         }
     }
 
-    /**
-     * Carga la lista de clientes en el ComboBox usando clienteDAO.listar().
-     * Invoca este método también cuando se alterne o abra la pestaña de citas.
-     */
+    // Carga la lista de clientes en el ComboBox usando clienteDAO.listar().
     public void cargarClientes() {
         try {
             List<Cliente> clientes = clienteDAO.listar();
@@ -114,18 +111,12 @@ public class CitaController {
 
     @FXML
     private void onGuardar() {
+        if (!validarFormulario()) {
+            return;
+        }
+
         try {
-            if (!Validador.validarCita(cbCliente.getValue(), dpFecha.getValue(), cbHora.getValue(),
-                    txtTipoServicio.getText(), txtDescripcion.getText(), cbEstado.getValue())) {
-                 return;
-             }
-
             Cliente clienteSeleccionado = cbCliente.getValue();
-            if (clienteSeleccionado == null || dpFecha.getValue() == null || cbHora.getValue() == null || cbEstado.getValue() == null) {
-                Alertas.advertencia("Campos incompletos", "Por favor complete los campos obligatorios.");
-                return;
-            }
-
             CitaTecnica nuevaCita = new CitaTecnica();
             nuevaCita.setClienteId(clienteSeleccionado.getId());
             nuevaCita.setFecha(dpFecha.getValue());
@@ -136,7 +127,6 @@ public class CitaController {
 
             citaDAO.insertar(nuevaCita);
             Alertas.info("Éxito", "Cita registrada correctamente.");
-
             cargarTabla();
             onLimpiarFormulario();
         } catch (SQLException e) {
@@ -152,11 +142,13 @@ public class CitaController {
             return;
         }
 
+        if (!validarFormulario()) {
+            return;
+        }
+
         try {
             Cliente clienteSeleccionado = cbCliente.getValue();
-            if (clienteSeleccionado != null) {
-                citaSeleccionada.setClienteId(clienteSeleccionado.getId());
-            }
+            citaSeleccionada.setClienteId(clienteSeleccionado.getId());
             citaSeleccionada.setFecha(dpFecha.getValue());
             citaSeleccionada.setHora(cbHora.getValue());
             citaSeleccionada.setTipoServicio(txtTipoServicio.getText().trim());
@@ -235,9 +227,9 @@ public class CitaController {
         tablaCitas.getSelectionModel().clearSelection();
     }
 
-    /**
-     * Llena los controles del formulario cuando se selecciona una fila en la TableView.
-     */
+    // --- MÉTODOS AUXILIARES ---
+
+    // Llena los controles del formulario cuando se selecciona una fila en la TableView.
     private void cargarFormulario(CitaTecnica cita) {
         dpFecha.setValue(cita.getFecha());
         cbHora.setValue(cita.getHora());
@@ -256,4 +248,34 @@ public class CitaController {
         }
     }
 
+
+    // Valida que todos los campos requeridos del formulario contengan información usando Validador y Alertas.
+
+    private boolean validarFormulario() {
+        if (cbCliente.getValue() == null) {
+            Alertas.advertencia("Campo Requerido", "Debe seleccionar un cliente.");
+            return false;
+        }
+        if (dpFecha.getValue() == null) {
+            Alertas.advertencia("Campo Requerido", "Debe seleccionar la fecha de la cita.");
+            return false;
+        }
+        if (cbHora.getValue() == null) {
+            Alertas.advertencia("Campo Requerido", "Debe seleccionar la hora de la cita.");
+            return false;
+        }
+        if (Validador.esVacio(txtTipoServicio.getText())) {
+            Alertas.advertencia("Campo Requerido", "Debe ingresar el tipo de servicio.");
+            return false;
+        }
+        if (Validador.esVacio(txtDescripcion.getText())) {
+            Alertas.advertencia("Campo Requerido", "Debe ingresar una descripción.");
+            return false;
+        }
+        if (cbEstado.getValue() == null) {
+            Alertas.advertencia("Campo Requerido", "Debe seleccionar el estado de la cita.");
+            return false;
+        }
+        return true;
+    }
 }
