@@ -1,5 +1,9 @@
 package ni.edu.uam.citas_tecnicas.util;
 
+import ni.edu.uam.citas_tecnicas.model.Cliente;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.regex.Pattern;
 
 public class Validador {
@@ -20,5 +24,13 @@ public class Validador {
         }
         String regex = "^[0-9\\-\\s]+$";
         return Pattern.matches(regex, telefono);
+    }
+    public static boolean validarCita(Cliente cliente, LocalDate fecha, LocalTime hora,
+                                      String tipoServicio, String descripcion, String estado) {
+        if (cliente == null || fecha == null || hora == null || esVacio(estado) || esVacio(tipoServicio)) {
+            Alertas.advertencia("Campos incompletos", "Cliente, fecha, hora, tipo de servicio y estado son obligatorios.");
+            return false;
+        }
+        return true;
     }
 }

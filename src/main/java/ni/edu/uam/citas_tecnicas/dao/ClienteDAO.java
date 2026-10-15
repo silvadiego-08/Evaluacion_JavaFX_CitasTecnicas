@@ -3,6 +3,7 @@ package ni.edu.uam.citas_tecnicas.dao;
 import ni.edu.uam.citas_tecnicas.model.Cliente;
 import ni.edu.uam.citas_tecnicas.db.ConexionDB;
 
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
