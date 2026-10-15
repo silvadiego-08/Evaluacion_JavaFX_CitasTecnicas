@@ -43,7 +43,7 @@
 - Crear, consultar, modificar y eliminar **clientes** y **citas técnicas**.
 - Controlar la relación **cliente (1) → (N) cita técnica** con integridad referencial.
 - Buscar clientes y filtrar citas por **estado** y **fecha**.
-- ⚠Validar los datos y manejar los errores sin perder la consistencia de la información.
+- Validar los datos y manejar los errores sin perder la consistencia de la información.
 
 ## Integrantes y distribución de responsabilidades
 
