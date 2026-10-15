@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🛠️ Sistema de Gestión de Citas Técnicas
+# Sistema de Gestión de Citas Técnicas
 
 ### TecnoAsistencia Nicaragua S.A.
 
@@ -14,17 +14,17 @@
 
 | | |
 |---|---|
-| 🏫 **Universidad** | Universidad Americana (UAM) · Ingeniería de Sistemas |
-| 📘 **Asignatura** | Programación de Aplicaciones de Escritorio |
-| 👨‍🏫 **Docente** | José A. Durán García |
-| 📦 **Actividad** | Módulo CRUD completo |
-| 📅 **Período** | 12 al 15 de octubre de 2026 |
+|  **Universidad** | Universidad Americana (UAM) · Ingeniería de Sistemas |
+|  **Asignatura** | Programación de Aplicaciones de Escritorio |
+|  **Docente** | José A. Durán García |
+| **Actividad** | Módulo CRUD completo |
+| **Período** | 12 al 15 de octubre de 2026 |
 
 </div>
 
 ---
 
-## 📑 Tabla de contenido
+## Tabla de contenido
 
 1. [Descripción del proyecto](#-descripción-del-proyecto)
 2. [Integrantes y distribución de responsabilidades](#-integrantes-y-distribución-de-responsabilidades)
@@ -36,7 +36,7 @@
 
 ---
 
-## 📌 Descripción del proyecto
+## Descripción del proyecto
 
 **TecnoAsistencia Nicaragua S.A.** necesita registrar a sus clientes y gestionar las citas de mantenimiento y reparación de equipos informáticos. Este proyecto es una **aplicación de escritorio desarrollada en JavaFX**, conectada a **PostgreSQL mediante JDBC puro** (sin Hibernate, JPA ni otro ORM), que permite:
 
@@ -45,7 +45,7 @@
 - Buscar clientes y filtrar citas por **estado** y **fecha**.
 - ⚠Validar los datos y manejar los errores sin perder la consistencia de la información.
 
-## 👥 Integrantes y distribución de responsabilidades
+## Integrantes y distribución de responsabilidades
 
 | Integrante | Usuario GitHub | Responsabilidades |
 |---|---|---|
@@ -56,7 +56,7 @@
 
 ---
 
-## 💻 Requisitos del sistema
+## Requisitos del sistema
 
 | Herramienta | Versión utilizada | Observación |
 |---|---|---|
@@ -70,7 +70,7 @@
 
 ---
 
-## ⚙️ Instalación y configuración
+## Instalación y configuración
 
 ### 1️⃣ Clonar el repositorio
 
@@ -95,13 +95,13 @@ CREATE DATABASE gestion_citas;
 psql -U postgres -d gestion_citas -f sql/gestion_citas.sql
 ```
 
-> 💡 En pgAdmin: clic derecho sobre `gestion_citas` → **Query Tool** → abrir `sql/gestion_citas.sql` → **Execute (F5)**.
+> En pgAdmin: clic derecho sobre `gestion_citas` → **Query Tool** → abrir `sql/gestion_citas.sql` → **Execute (F5)**.
 
 El script crea las tablas `cliente` y `cita_tecnica`, sus restricciones (`UNIQUE`, `CHECK`, clave foránea) e inserta **5 clientes y 5 citas de prueba**.
 
 ### 3️⃣ Configurar las credenciales locales
 
-> 🔒 **Por seguridad, la contraseña real de la base de datos nunca se sube al repositorio.** El archivo `db.properties` está incluido en `.gitignore`.
+> **Por seguridad, la contraseña real de la base de datos nunca se sube al repositorio.** El archivo `db.properties` está incluido en `.gitignore`.
 
 1. Copiar la plantilla `db.properties.example` y renombrar la copia como **`db.properties`** (en la raíz del proyecto, junto al `pom.xml`).
 2. Escribir los datos de su instalación local:
@@ -118,7 +118,7 @@ db.password=SU_CONTRASEÑA_LOCAL
 | `db.user` | Usuario de PostgreSQL. |
 | `db.password` | Contraseña local del usuario (sin comillas). |
 
-> ⚠️ Si falta `db.properties` o alguna de sus claves, `ConexionDB` muestra un mensaje que indica exactamente qué archivo o clave falta.
+> Si falta `db.properties` o alguna de sus claves, `ConexionDB` muestra un mensaje que indica exactamente qué archivo o clave falta.
 
 ### 4️⃣ Abrir el proyecto en IntelliJ IDEA
 
@@ -150,7 +150,7 @@ mvnw.cmd clean javafx:run
 
 ---
 
-## 🏗️ Arquitectura del proyecto
+## Arquitectura del proyecto
 
 El proyecto sigue una **arquitectura por capas** que separa la interfaz, la lógica de control y el acceso a datos.
 
@@ -176,7 +176,7 @@ Evaluacion_JavaFX_CitasTecnicas/
 ```
 ---
 
-## 🧪 Pruebas de aceptación y capturas
+## Pruebas de aceptación y capturas
 
 > 📸 Las capturas se encuentran en la carpeta [`docs/capturas/`](docs/capturas/).
 
