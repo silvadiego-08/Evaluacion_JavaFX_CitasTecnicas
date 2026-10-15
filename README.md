@@ -49,10 +49,10 @@
 
 | Integrante | Usuario GitHub | Responsabilidades |
 |---|---|---|
-| **Diego José Silva Cubas** | [@silvadiego-08](https://github.com/silvadiego-08) | Estructura del proyecto Maven, `module-info.java`, `MainApp` y menú principal (`main-view.fxml`), clase de conexión centralizada `ConexionDB`, clase `Alertas`, modelo `CitaTecnica` y `CitaTecnicaDAO` (JOIN y filtros). Revisión e integración de los Pull Requests. |
-| **Claudia [Apellidos]** | [@ClaudiaLiraB](https://github.com/ClaudiaLiraB) | Script de base de datos `gestion_citas.sql` (tablas, restricciones y datos de prueba), modelo `Cliente`, `ClienteDAO` y su clase de prueba `PruebaClienteDAO`. |
-| **Mia Flores [Apellido]** | [@mimikfs](https://github.com/mimikfs) | Vista de clientes `cliente-view.fxml`, `ClienteController` (CRUD, búsqueda y selección en tabla) y clase de validaciones `Validador`. |
-| **Celeste [Apellidos]** | [@Celeste-10](https://github.com/Celeste-10) | Vista de citas `cita-view.fxml`, `CitaController` (CRUD de citas, ComboBox de clientes, filtros por estado y fecha) y ejecución de las pruebas de aceptación. |
+| **Diego José Silva** | [@silvadiego-08](https://github.com/silvadiego-08) | Estructura del proyecto Maven, `module-info.java`, `MainApp` y menú principal (`main-view.fxml`), clase de conexión centralizada `ConexionDB`, clase `Alertas`, modelo `CitaTecnica` y `CitaTecnicaDAO` (JOIN y filtros). Revisión e integración de los Pull Requests. |
+| **Claudia Lira** | [@ClaudiaLiraB](https://github.com/ClaudiaLiraB) | Script de base de datos `gestion_citas.sql` (tablas, restricciones y datos de prueba), modelo `Cliente`, `ClienteDAO` y su clase de prueba `PruebaClienteDAO`. |
+| **Mia Flores** | [@mimikfs](https://github.com/mimikfs) | Vista de clientes `cliente-view.fxml`, `ClienteController` (CRUD, búsqueda y selección en tabla) y clase de validaciones `Validador`. |
+| **Celeste** | [@Celeste-10](https://github.com/Celeste-10) | Vista de citas `cita-view.fxml`, `CitaController` (CRUD de citas, ComboBox de clientes, filtros por estado y fecha) y ejecución de las pruebas de aceptación. |
 
 ---
 
@@ -190,9 +190,7 @@ Evaluacion_JavaFX_CitasTecnicas/
 | 6 | Filtrar citas por estado y fecha, y limpiar los filtros | ✅ | ![](docs/capturas/06-filtros.png) |
 | 7 | Cambiar el estado de una cita a **Finalizada** | ✅ | ![](docs/capturas/07-cita-finalizada.png) |
 | 8 | Intentar eliminar un cliente con citas; la operación debe rechazarse | ✅ | ![](docs/capturas/08-eliminar-restringido.png) |
-| 9 | Eliminar la cita y después el cliente, confirmando cada operación | ✅ | ![](docs/capturas/09-eliminar-cita-cliente.png) |
-| 10 | Cerrar y volver a abrir la aplicación; los cambios válidos persisten | ✅ | ![](docs/capturas/10-persistencia.png) |
-| 11 | Mostrar los commits y autores del 12, 13 y 14 de octubre | ✅ | ![](docs/capturas/11-historial-commits.png) |
+| 9 | Eliminar la cita | ✅ | ![](docs/capturas/09-eliminar-cita-cliente.png) |
 
 ---
 
