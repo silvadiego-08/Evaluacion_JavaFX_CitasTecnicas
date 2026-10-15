@@ -23,24 +23,14 @@
         <TabPane styleClass="tabs-principal" tabClosingPolicy="UNAVAILABLE">
             <Tab text="Clientes">
                 <content>
-                    <!-- Cuando Mia tenga su vista lista, borra el VBox de abajo y descomenta esta línea:
+
                     <fx:include source="cliente-view.fxml"/>
-                    -->
-                    <VBox alignment="CENTER" spacing="6.0" styleClass="placeholder">
-                        <Label styleClass="placeholder-titulo" text="Módulo de clientes" />
-                        <Label styleClass="placeholder-texto" text="Aquí se cargará cliente-view.fxml" />
-                    </VBox>
                 </content>
             </Tab>
             <Tab text="Citas técnicas">
                 <content>
-                    <!-- Cuando Celeste tenga su vista lista, borra el VBox de abajo y descomenta esta línea:
+
                     <fx:include source="cita-view.fxml"/>
-                    -->
-                    <VBox alignment="CENTER" spacing="6.0" styleClass="placeholder">
-                        <Label styleClass="placeholder-titulo" text="Módulo de citas técnicas" />
-                        <Label styleClass="placeholder-texto" text="Aquí se cargará cita-view.fxml" />
-                    </VBox>
                 </content>
             </Tab>
         </TabPane>

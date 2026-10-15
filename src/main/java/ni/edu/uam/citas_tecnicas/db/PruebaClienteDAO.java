@@ -5,10 +5,6 @@ import ni.edu.uam.citas_tecnicas.model.Cliente;
 
 import java.sql.SQLException;
 
-/**
- * Prueba manual de ClienteDAO contra PostgreSQL, sin interfaz.
- * Ejecutar con la flecha verde junto a main y leer la consola.
- */
 public class PruebaClienteDAO {
 
     public static void main(String[] args) {
