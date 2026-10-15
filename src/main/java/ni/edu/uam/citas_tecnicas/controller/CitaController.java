@@ -81,6 +81,7 @@ public class CitaController {
         // 5. Cargar datos iniciales
         cargarTabla();
         cargarClientes();
+        cbCliente.setOnShowing(e -> cargarClientes());
     }
 
 
@@ -99,8 +100,19 @@ public class CitaController {
     // Carga la lista de clientes en el ComboBox usando clienteDAO.listar().
     public void cargarClientes() {
         try {
+            // Recordar el cliente elegido antes de recargar
+            Cliente actual = cbCliente.getValue();
             List<Cliente> clientes = clienteDAO.listar();
             cbCliente.setItems(FXCollections.observableArrayList(clientes));
+
+            if (actual != null) {
+                for (Cliente c : clientes) {
+                    if (c.getId().equals(actual.getId())) {
+                        cbCliente.setValue(c);
+                        break;
+                    }
+                }
+            }
         } catch (SQLException e) {
             e.printStackTrace();
             Alertas.error("No se pudo cargar la lista de clientes.", e);
