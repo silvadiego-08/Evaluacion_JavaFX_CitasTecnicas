@@ -4,9 +4,4 @@ db.url=jdbc:postgresql://localhost:5432/gestion_citas
 db.user=postgres
 db.password=
 
-# db.properties está en .gitignore
-# No uses comillas: en un .properties forman parte del valor.
-db.url=jdbc:postgresql://localhost:5432/gestion_citas
-db.user=postgres
-db.password= 1234
 
